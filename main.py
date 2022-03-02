@@ -57,7 +57,7 @@ async def on_message(message):
     if message.content.lower() == '$$bow ' :
         await message.channel.send('* bows cuz u gave me the command *')
     if message.content.lower().startswith('$$bowforme ') :
-        await message.channel.send('* ' + message.author.name + ' bows cuz ' + message.content[len('$$bowforme ') : ] + ' *')
+        await message.channel.send('* ' + message.author.name + ' bows ' + message.content[len('$$bowforme ') : ] + ' *')
     # if message.content.startswith('$$set welcomebowchannel ') :
     #     if update_welcome_channel(message.guild.name, message.channel_mentions[0].name) :
     #         await message.channel.send('#' + message.channel_mentions[0].name + ' has been succesfully updated as the welcoming with a bow channel!')

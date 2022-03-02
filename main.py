@@ -58,10 +58,10 @@ async def on_message(message):
         await message.channel.send('* bows cuz u gave me the command *')
     if message.content.lower().startswith('$$bowforme ') :
         if len(message.mentions) != 0 :
-            clean_message = message.content[len('$$bowforme ') : ]
+            clean_message = message.clean_content[len('$$bowforme ') : ]
             for mention in message.mentions :
                 clean_message = clean_message.replace('@' + mention.name, '').replace(mention.mention, '')
-                print(mention.mention, mention.name, message.content, message.content.replace(mention.mention, ''))
+                print(mention.mention, mention.name, message.content, message.clean_content, message.content.replace(mention.mention, ''))
             await message.channel.send('* ' + message.author.name + ' bows to ' + ' ,  '.join([k.mention for k in message.mentions]) + ' ' + clean_message + ' *')
         else :
             await message.channel.send('* ' + message.author.name + ' bows ' + message.content[len('$$bowforme ') : ] + ' *')

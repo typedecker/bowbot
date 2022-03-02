@@ -58,7 +58,7 @@ async def on_message(message):
         await message.channel.send('* bows cuz u gave me the command *')
     if message.content.lower().startswith('$$bowforme ') :
         if len(message.mentions) != 0 :
-            await message.channel.send('* ' + message.author.name + ' bows to @' + ', @'.join(message.mentions) + ' ' + message.content[len('$$bowforme ') : ] + ' *')
+            await message.channel.send('* ' + message.author.name + ' bows to @' + ', @'.join([k.name for k in message.mentions]) + ' ' + message.content[len('$$bowforme ') : ] + ' *')
         else :
             await message.channel.send('* ' + message.author.name + ' bows ' + message.content[len('$$bowforme ') : ] + ' *')
 

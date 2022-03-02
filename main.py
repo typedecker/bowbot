@@ -64,10 +64,12 @@ async def on_message(message):
         else :
             await message.channel.send('* ' + message.author.name + ' bows ' + message.content[len('$$bowforme ') : ] + ' *')
     if message.content.startswith('$$bowbot promote ') and message.author == message.guild.owner :
+        print('REACHED HERE LOL')
         content = message.content
         target = message.mentions[0]
         promote_role = message.role_mentions[0]
         target_roles = [] + target.roles.copy()
+        print('HERE TOO LOL', promote_role.name, target.name)
         if not target_roles.__contains__(promote_role) :
             await message.mentions[0].add_roles(promote_role)
             await message.channel.send('Congratulations ' + target.name + '! You have been promoted to ' + promote_role.name)

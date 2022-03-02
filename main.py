@@ -5,9 +5,8 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    client.loop.create_task(tasks_loop())
     
-    game = discord.Game("CWL for TYPE CREW in Clash Of Clans..Hehe ;)")
+    game = discord.Game("Bowing the hell out of whoever calls me to their server and bawn bowing...")
     await client.change_presence(activity = game)
     return
 

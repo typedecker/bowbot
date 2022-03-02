@@ -54,13 +54,14 @@ async def on_member_join(member) :
 async def on_message(message):
     if message.author == client.user :
         return
-    if message.content.lower() == '$$bow ' :
+    if message.content.lower() == '$$bow' :
         await message.channel.send('* bows cuz u gave me the command *')
     if message.content.lower().startswith('$$bowforme ') :
         if len(message.mentions) != 0 :
             clean_message = message.content[len('$$bowforme ') : ]
             for mention in message.mentions :
                 clean_message = clean_message.replace('@' + mention.name, '').replace(mention.mention, '')
+                print(mention.mention, mention.name)
             await message.channel.send('* ' + message.author.name + ' bows to ' + ' ,  '.join([k.mention for k in message.mentions]) + ' ' + clean_message + ' *')
         else :
             await message.channel.send('* ' + message.author.name + ' bows ' + message.content[len('$$bowforme ') : ] + ' *')

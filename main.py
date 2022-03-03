@@ -1,6 +1,7 @@
 import discord, os
 
-client = discord.Client(fetch_offline_members = True)
+intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True)
+client = discord.Client(fetch_offline_members = True, intents = intents)
 
 # welcome_channels = {}
 

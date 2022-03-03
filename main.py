@@ -1,6 +1,6 @@
 import discord, os
 
-client = discord.Client()
+client = discord.Client(fetch_offline_members = True)
 
 # welcome_channels = {}
 

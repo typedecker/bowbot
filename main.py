@@ -1,7 +1,7 @@
 import discord, os
 
 intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True)
-client = discord.Client(fetch_offline_members = True, intents = intents)
+client = discord.Client(chunk_guilds_at_startup = True, intents = intents)
 
 # welcome_channels = {}
 
@@ -48,8 +48,8 @@ async def on_member_join(member) :
             await member.create_dm()
         await member.dm_channel.send('* bows to welcome you *')
         await member.guild.system_channel.send('* bows to welcome ' + member.name + ' *')
-    except :
-        print('Some error occured in the on_member_remove function')
+    except Exception as err :
+        print('Some error occured in the on_member_remove function', Exception, err)
     return
 
 @client.event
@@ -59,8 +59,8 @@ async def on_member_remove(member) :
             await member.create_dm()
         await member.dm_channel.send('* bows to say bye bye *')
         await member.guild.system_channel.send('* bows to say bye bye to ' + member.name + ' *')
-    except :
-        print('Some error occured in the on_member_remove function')
+    except Exception as err :
+        print('Some error occured in the on_member_remove function', Exception, err)
     return
 
 @client.event
@@ -77,7 +77,7 @@ async def on_message(message):
             await message.channel.send('* bows cuz u gave me the command *')
         if message.content.lower() == '$$bowbotwebsite' :
             await message.channel.send('* bows to tell you that the official website of bowbot is -: https://bowbotwebsite.typedecker.repl.co/ *')
-        if message.content.lower() == '$$bowbotdocs' :
+        if message.content.lower() == '$$bowbotdocs' or message.content.lower() == '$$bowbothelp' :
             await message.channel.send('* bows to tell you that you can find the docs here -: https://bowbotwebsite.typedecker.repl.co/docs.html *')
         if message.content.lower().startswith('$$bowforme ') :
             if len(message.mentions) != 0 :
@@ -112,8 +112,8 @@ async def on_message(message):
                 await target.dm_channel.send('So unfortunate ' + target.name + '! You have been demoted from ' + demote_role.name)
             else :
                 await message.channel.send('The member already does not have that role.')
-    except :
-        print('Some error occured in the message checker function')
+    except Exception as err :
+        print('Some error occured in the message checker function', Exception, err)
     return
 
 client.run(os.environ['BOT_TOKEN'])

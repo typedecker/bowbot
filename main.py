@@ -50,6 +50,14 @@ async def on_member_join(member) :
     return
 
 @client.event
+async def on_member_join(member) :
+    if member.dm_channel == None :
+        await member.create_dm()
+    await member.dm_channel.send('* bows to say bye bye *')
+    await member.guild.system_channel.send('* bows to say bye bye to ' + member.name + ' *')
+    return
+
+@client.event
 async def on_message(message):
     if message.author == client.user :
         return

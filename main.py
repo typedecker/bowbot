@@ -75,6 +75,10 @@ async def on_message(message):
         print(message.author == message.guild.owner)
         if message.content.lower() == '$$bow' :
             await message.channel.send('* bows cuz u gave me the command *')
+        if message.content.lower() == '$$bowbotwebsite' :
+            await message.channel.send('* bows to tell you that the official website of bowbot is -: https://bowbotwebsite.typedecker.repl.co/ *')
+        if message.content.lower() == '$$bowbotdocs' :
+            await message.channel.send('* bows to tell you that you can find the docs here -: https://bowbotwebsite.typedecker.repl.co/docs.html *')
         if message.content.lower().startswith('$$bowforme ') :
             if len(message.mentions) != 0 :
                 clean_message = message.clean_content[len('$$bowforme ') : ]

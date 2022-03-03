@@ -1,4 +1,4 @@
-import discord, os
+import discord, os, traceback
 
 intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True)
 client = discord.Client(chunk_guilds_at_startup = True, intents = intents)
@@ -50,6 +50,7 @@ async def on_member_join(member) :
         await member.guild.system_channel.send('* bows to welcome ' + member.name + ' *')
     except Exception as err :
         print('Some error occured in the on_member_remove function', Exception, err)
+        traceback.print_exc()
     return
 
 @client.event
@@ -61,6 +62,7 @@ async def on_member_remove(member) :
         await member.guild.system_channel.send('* bows to say bye bye to ' + member.name + ' *')
     except Exception as err :
         print('Some error occured in the on_member_remove function', Exception, err)
+        traceback.print_exc()
     return
 
 @client.event
@@ -114,6 +116,7 @@ async def on_message(message):
                 await message.channel.send('The member already does not have that role.')
     except Exception as err :
         print('Some error occured in the message checker function', Exception, err)
+        traceback.print_exc()
     return
 
 client.run(os.environ['BOT_TOKEN'])

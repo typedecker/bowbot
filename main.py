@@ -72,9 +72,10 @@ async def on_message(message):
             return
         print(message.author)
         print(message.content)
-        print(message.guild.name)
-        print(message.guild.owner.name)
-        print(message.author == message.guild.owner)
+        if message.guild != None :
+            print(message.guild.name)
+            print(message.guild.owner.name)
+            print(message.author == message.guild.owner)
         if message.content.lower() == '$$bow' :
             await message.channel.send('* bows cuz u gave me the command *')
         if message.content.lower() == '$$bowbotwebsite' :

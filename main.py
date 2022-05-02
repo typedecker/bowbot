@@ -54,7 +54,7 @@ async def on_member_join(member) :
     return
 
 @client.event
-async def on_member_remove(member) :
+async def on_raw_member_remove(member) :
     try :
         if member.dm_channel == None :
             await member.create_dm()

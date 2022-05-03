@@ -117,6 +117,8 @@ async def on_message(message):
                 await target.dm_channel.send('So unfortunate ' + target.name + '! You have been demoted from ' + demote_role.name)
             else :
                 await message.channel.send('The member already does not have that role.')
+        if message.content == 'monke' :
+            await message.channel.send('MONKE!!!!!!!')
     except Exception as err :
         print('Some error occured in the message checker function', Exception, err)
         traceback.print_exc()

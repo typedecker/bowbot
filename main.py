@@ -1,6 +1,6 @@
 import discord, os, traceback
 
-intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True)
+intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True, message_content = True)
 client = discord.Client(chunk_guilds_at_startup = True, intents = intents)
 
 # welcome_channels = {}

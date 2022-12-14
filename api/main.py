@@ -1,4 +1,5 @@
 import discord, os, traceback
+from http.server import BaseHTTPRequestHandler
 
 intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True, message_content = True)
 client = discord.Client(chunk_guilds_at_startup = True, intents = intents)
@@ -124,4 +125,11 @@ async def on_message(message):
         traceback.print_exc()
     return
 
-client.run(os.environ['BOT_TOKEN'])
+class handler(BaseHTTPRequestHandler):
+
+  def do_GET(self):
+    self.send_response(200)
+    self.send_header('Content-type', 'text/plain')
+    self.end_headers()
+    client.run(os.environ['BOT_TOKEN'])
+    return

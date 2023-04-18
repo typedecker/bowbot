@@ -1,3 +1,4 @@
 discord.py
 nest_asyncio
 typing
+flask

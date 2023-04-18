@@ -14,7 +14,7 @@ nest_asyncio.apply()
 import discord, os, traceback, asyncio, random, pickle, copy # General modules for discord bots
 from typing import Optional, Literal, Union # Used to support slash command API
 from discord.ext import tasks, commands # Used to support slash command API
-# from flask import Flask # Used to run a webpage along with the bot, to keep the bot online on repl.it
+from flask import Flask # Used to run a webpage along with the bot, to keep the bot online on repl.it
 from threading import Thread # Used to run a thread to run the bot on(using flask)
 from itertools import cycle # Used to switch status to keep the bot alive
 from discord import app_commands # To enable slash commands and their API
@@ -342,20 +342,20 @@ class BowbotClient(discord.Client):
     
     pass
 
-# app = Flask('')
+app = Flask('')
 
-# @app.route('/')
-# def main():
-#   return 'Bowbot is ready.'
+@app.route('/')
+def main():
+  return 'Bowbot is ready.'
 
-# def run():
-#   app.run(host = '0.0.0.0', port = 8000)
-#   return
+def run():
+  app.run(host = '0.0.0.0', port = 8000)
+  return
 
-# def keep_alive():
-#   server = Thread(target = run)
-#   server.start()
-#   return
+def keep_alive():
+  server = Thread(target = run)
+  server.start()
+  return
 
 client = BowbotClient()
 

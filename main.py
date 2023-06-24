@@ -1,4 +1,4 @@
-import bot_rewrite
+import bot as bot_rewrite
 import os
 import discord
 

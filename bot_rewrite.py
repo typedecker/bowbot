@@ -38,7 +38,7 @@ class BowbotClient(discord.Client):
     ### GENERAL SETUP
     def __init__(self):
         # Using self.intents gives an attribute error for some reason.
-        intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True)
+        intents = discord.Intents(guilds = True, dm_messages = True, members = True, messages = True, guild_messages = True, invites = True, message_content = True)
         super().__init__(chunk_guilds_at_startup = True, intents = intents)
         
         self.tree = app_commands.CommandTree(self) # for slash commands

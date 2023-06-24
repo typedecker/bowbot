@@ -161,29 +161,6 @@ async def on_raw_member_remove(member) :
         traceback.print_exc()
     return
 
-# Define a simple View that gives us a confirmation menu
-class Confirm(discord.ui.View):
-    def __init__(self):
-        super().__init__()
-        self.value = None
-
-    # When the confirm button is pressed, set the inner value to `True` and
-    # stop the View from listening to more input.
-    # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label='Confirm', style=discord.ButtonStyle.green)
-    async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message('Confirming', ephemeral=True)
-        self.value = True
-        self.stop()
-
-    # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label='Cancel', style=discord.ButtonStyle.grey)
-    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message('Cancelling', ephemeral=True)
-        self.value = False
-        self.stop()
-
-
 @client.event
 async def on_message(message):
     global bowing_server_guild_id, active_channel_id, swear_check_free_channels, swear_words, bot_owner_id
@@ -207,16 +184,7 @@ async def on_message(message):
         if message.content.lower() == '$$ping' :
             await message.channel.send('Bot has been successfully pinged! tyy <33~')
         if message.content.lower() == '$$test' :
-          view = Confirm()
-          await message.channel.send('Do you want to continue?', view = view)
-          # Wait for the View to stop listening for input...
-          await view.wait()
-          if view.value is None:
-              print('Timed out...')
-          elif view.value:
-              print('Confirmed...')
-          else:
-              print('Cancelled...')
+            pass
         if message.content.lower() == '$$getrandomenglishword' :
           await chat_reviver_coroutine(message.channel)
     #     if message.content.lower() == '$$test' :

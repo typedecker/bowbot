@@ -5,7 +5,7 @@ import discord
 while __name__ == '__main__':
     try:
         bot_rewrite.keep_alive()
-        bot_rewrite.client.run(os.environ['BOT_TOKEN'])
+        bot_rewrite.client.run(os.environ['BOT_TOKEN']) 
         bot_rewrite.run()
     except discord.errors.HTTPException as e:
         print(e)
